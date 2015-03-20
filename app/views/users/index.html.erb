@@ -1,0 +1,13 @@
+<%= link_to 'Sign up!', new_user_path %>
+
+<br><br>
+
+<% @users.each do |user| %>
+
+	<h4><%= user.name %><br></h4>
+	<p>Email: <%= user.email %><p>
+	<% if user.admin? %>
+	  <p> An admin <p>
+	<% end %>
+	<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+<% end %>

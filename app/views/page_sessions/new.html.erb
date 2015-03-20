@@ -1,0 +1,13 @@
+<%= form_tag(page_sessions_path, method: :post) do %>
+  <%= label_tag :email %>
+  <%= email_field :page_session, :email %>
+
+  <br><br>
+
+  <%= label_tag :password %>
+  <%= password_field :page_session, :password %>
+
+  <br><br>
+
+  <%= submit_tag %>
+<% end %>

@@ -6,9 +6,9 @@ def new
     user = User.find_by(email: page_session_params[:email])
     if user && user.authenticate(page_session_params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Succesful Login'
+      redirect_to root_path, notice: 'Successful Login'
     else
-      redirect_to new_page_session_path, notice: 'Unsuccesful Login'
+      redirect_to new_page_session_path, notice: 'Unsuccessful Login'
     end
   end
 

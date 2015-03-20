@@ -6,7 +6,7 @@ resources :page_sessions, only: [:new, :create, :index]
 	  resources :posts, only: [:new, :create, :destroy]
 	end
 
-delete 'sign_out' => 'session_pages#destroy'
+delete 'sign_out' => 'page_sessions#destroy'
 
 root 'page_sessions#index'
   # The priority is based upon order of creation: first created -> highest priority.
