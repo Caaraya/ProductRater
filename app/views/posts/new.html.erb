@@ -1,0 +1,29 @@
+<%= form_for Post.new ,:url => {:action => :create, :controller => :posts} do |f| %>
+
+  <%= f.label :name %>
+  <br>
+  <%= f.text_field :name %>
+  <br><br>
+
+  <%= f.label :description %>
+  <br>
+  <%= f.text_area :description %>
+
+  <br><br>
+
+  <%= f.label :photo_url %>
+  <br>
+  <%= f.text_field :photo_url %>
+  
+  <br><br>
+
+  <%= f.label :rating %>
+  <br>
+  <p><%= f.number_field :rating, min: 0, max: 5 %> / 5<p>
+  
+  <br><br>
+  
+
+  <%= f.submit %>
+
+<% end %>
