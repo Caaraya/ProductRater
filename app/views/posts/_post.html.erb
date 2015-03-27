@@ -1,0 +1,9 @@
+<% if post.persisted? %>
+<div class="post" id="post-<%= post.id %>">
+<h4><%= post.user.name %>, : <%= post.name %></h4>
+<%= image_tag post.photo_url %>
+<%= simple_format(post.description) %>
+<h4><%= post.rating %> / 5</h4>
+<em><%= post.created_at %></em> | <%= link_to('Mark as spam', user_post_path(post.user, post), method: :delete) %>
+</div>
+<% end %>

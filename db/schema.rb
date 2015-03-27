@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150320193602) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
     t.text     "description"
     t.string   "name"
     t.string   "photo_url"
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150320193602) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest",   null: false
     t.boolean  "admin"
     t.datetime "last_signed_in_at"
     t.datetime "created_at",        null: false

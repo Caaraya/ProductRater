@@ -11,10 +11,9 @@
 <% if signed_in? %>
   <h3>Current user: <%= current_user.name %></h3>
   <p><%= current_user.last_signed_in_at%><p>
-  <%= link_to 'new post', new_user_post_path(current_user, Post.new) %>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
   <% if admin? %>
-    <%= link_to 'Users', users_path%>
+    <%= link_to 'Users', root_path%>
   <% end %>
 <% else %>
   <p>Please sign in <%= link_to 'Sign in', new_page_session_path %></p>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+helper_method :lookup
  def index
     @posts = Posts.all
   end
@@ -8,12 +9,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @post = lookup.posts.create!(post_params)
+	respond_to do |format|
+		if @post.save
+		  format.html { redirect_to root_path(lookup) }
+		  format.js
+		else
+		  format.html { render :new }
+		  format.js
+		end
+	end
   end
 
   def edit
@@ -22,23 +27,37 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
-    if @post.update_attributes(post_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+    respond_to do |format|
+		if @post.update_attributes(post_params)
+		  format.html { redirect_to root_path }
+		  format.js
+		else
+		  format.html { render :edit }
+		  format.js
+		end
+	end
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_path
+	respond_to do |format|
+	  format.html { redirect_to root_path }
+	  format.js
+	end
   end
 
   private
 
   def post_params
     params.require(:post).permit(:name, :description, :photo_url, :rating)
+  end
+  
+  def lookup
+    @_user ||= User.find(params[:user_id])
+  end
+  
+  def posts
+	@posts
   end
 end
