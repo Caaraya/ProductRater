@@ -1,25 +1,13 @@
 <%= link_to 'Sign up!', new_user_path %>
 
 <br><br>
-<% if @user.present? == true %>
-	<% if @user.admin == true %> 
-		<% @users.each do |user| %>
-			<h4><%= user.name %><br></h4>
-			<p>Email: <%= user.email %><p>
-			<% if user.admin? %>
-			  <p> An admin <p>
-			<% end %>
-			<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-		<% end %>
-	<% end %>
-	<h4>Posts</h4>
-	<%= render 'posts/form', post: user.posts.new %>
-<% end %>
-
 <% @users.each do |user| %>
 	<div class="six columns">
 		<div id='user-<%= user.id %>-post-list' class='post-list'>
 		  <%= render user.posts %>
+		  <% user.posts.each do |comment| %>
+		  
+		  <% end %>
 		</div>
 	</div>
 <% end %>

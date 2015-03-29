@@ -1,5 +1,5 @@
 class PageSessionsController < ApplicationController
-def new
+  def new
   end
 
   def create
@@ -14,7 +14,7 @@ def new
 
   def destroy
     session.delete(:user_id)
-    redirect_to root_path, notice: 'Bye!'
+    redirect_to root_path, notice: 'Logout successful!'
   end
 
   private

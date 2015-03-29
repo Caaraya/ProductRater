@@ -12,12 +12,24 @@
   <h3>Current user: <%= current_user.name %></h3>
   <p><%= current_user.last_signed_in_at%><p>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
-  <% if admin? %>
-    <%= link_to 'Users', root_path%>
-  <% end %>
+  <% if current_user.admin == true %> 
+		<% all_users.each do |user| %>
+			<h4><%= user.name %><br></h4>
+			<p>Email: <%= user.email %><p>
+			<% if user.admin? %>
+			  <p> An admin <p>
+			<% end %>
+			<% if (current_user.id != user.id) %>
+				<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+			<% end %>
+		<% end %>
+	<% end %>
+  <h4>Posts</h4>
+  <%= render 'posts/form', post: current_user.posts.new %>
 <% else %>
   <p>Please sign in <%= link_to 'Sign in', new_page_session_path %></p>
 <% end %>
+
 <br><br>
 
 <%= yield %>
