@@ -8,6 +8,8 @@ resources :page_sessions, only: [:new, :create, :index]
 
 delete 'sign_out' => 'page_sessions#destroy'
 
+match "/posts/add_new_comment" => "posts#add_new_comment", :as => "add_new_comment_to_posts", :via => [:post]
+
 root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

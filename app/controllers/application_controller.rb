@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
       nil
     end
   end
+  
   def all_users
     users = User.all
   end

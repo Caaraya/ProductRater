@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
 belongs_to :user
-acts_as_commentable :public
+acts_as_commentable
 end

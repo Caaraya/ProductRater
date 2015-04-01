@@ -8,6 +8,10 @@
 </head>
 <body>
 <h3><%= flash[:notice] %></h3>
+
+
+<%= yield %>
+
 <% if signed_in? %>
   <h3>Current user: <%= current_user.name %></h3>
   <p><%= current_user.last_signed_in_at%><p>
@@ -29,10 +33,6 @@
 <% else %>
   <p>Please sign in <%= link_to 'Sign in', new_page_session_path %></p>
 <% end %>
-
-<br><br>
-
-<%= yield %>
 
 </body>
 </html>

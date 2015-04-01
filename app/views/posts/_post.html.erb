@@ -5,5 +5,23 @@
 <%= simple_format(post.description) %>
 <h4><%= post.rating %> / 5</h4>
 <em><%= post.created_at %></em> | <%= link_to('Mark as spam', user_post_path(post.user, post), method: :delete) %>
-</div>
+<% commentable = Post.find(post.id) %>
+<% comments = commentable.comments.recent.limit(10).all %>
+<% comments.each do |comment| %>
+	<h5><%= comment.title %></h5>
+	<p><%= comment.comment %><p>
+<% end %>
+	<%= form_tag "/posts/add_new_comment" do %>
+	  <%= hidden_field_tag "id", post.id %>
+	  <% if signed_in? %>
+	  <%= text_field 'comment', 'title' , :value => current_user.name%>
+	  <% else %>
+	  <%= text_field 'comment', 'title' %>
+	  <% end %>
+	  <br>
+	  <%= text_area 'comment', 'comment', :size => '50x5' %>
+	  <br>
+	  <%= submit_tag 'Add Comment' %>
+	</div>
+	<% end %>
 <% end %>

@@ -25,17 +25,16 @@ helper_method :lookup
     @post = Post.find(params[:id])
   end
 
-  def update
-    @post = Post.find(params[:id])
-    respond_to do |format|
-		if @post.update_attributes(post_params)
-		  format.html { redirect_to root_path }
-		  format.js
-		else
-		  format.html { render :edit }
-		  format.js
-		end
-	end
+  
+  def add_new_comment
+	# Get the object that you want to comment
+	commentable = Post.find(params[:id])
+
+	# Create a comment with the user submitted content
+	comment = Comment.new(comment_params)
+	# Add the comment
+	commentable.comments << comment
+    redirect_to root_path
   end
 
   def destroy
@@ -51,6 +50,10 @@ helper_method :lookup
 
   def post_params
     params.require(:post).permit(:name, :description, :photo_url, :rating)
+  end
+  
+  def comment_params
+    params.require(:comment).permit(:title, :comment, :post_id, :user_id)
   end
   
   def lookup
