@@ -13,10 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ 
  body {
-  font-family: sansserif;
+  font-family: Tahoma, Geneva, sans-serif;
   color: #e5e5e5;
-  background: #3D1F00;
+  background: #535353;
 }
 
 .container {
@@ -24,27 +25,120 @@
 }
 
 h1 {
-  font: 48px/1 sansserif;
+  font: 48px/1 Tahoma, Geneva, sans-serif;
 }
 
 input, textarea {
   height: auto;
-  font-family: sansserif;
+  font-family: Tahoma, Geneva, sans-serif;
   font-weight: bold;
-  color: #32fd4a;
+  color: #197e25;
+}
+a:link {
+  color: #0000FF;
+  background-color: #7070ff;
+  text-decoration: none;
+  display: inline-block;
+  height: 20px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  box-sizing: border-box; 
 }
 
-a {
-  color: #ddd;
+/* visited link */
+a:visited {
+  color: #0c3e12;
+  text-decoration: none;
+  background-color: #32fd4a;
+  display: inline-block;
+  height: 20px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+
+/* mouse over link */
+a:hover {
+  color: #FF00F0;
+  background-color: #ffb2fa;
+  text-decoration: none;
+  display: inline-block;
+  height: 20px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+
+/* selected link */
+a:active {
+  color: #FF00FF;
+  background-color: #32fd4a;
+  text-decoration: none;
+  display: inline-block;
+  height: 20px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  box-sizing: border-box; 
 }
 
 img{
     width:100%;
-    max-width:600px;
+    max-width:590px;
+	border: 5px solid #444;
 }
 
 button, input[type=submit] {
-  background: #7efe8d;
+  background: 
+  /* On "top" */
+  repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #32fd4a 10px,
+    #32fd4a 20px
+  ),
+  /* on "bottom" */
+  linear-gradient(
+    to bottom,
+    #fff,
+    #197e25
+  );
 }
 
 .post-row {

@@ -31,10 +31,13 @@ helper_method :lookup
 	commentable = Post.find(params[:id])
 
 	# Create a comment with the user submitted content
-	comment = Comment.new(comment_params)
+	@comment = Comment.new(comment_params)
 	# Add the comment
-	commentable.comments << comment
-    redirect_to root_path
+	commentable.comments << @comment
+    respond_to do |format|
+	  format.html { redirect_to root_path }
+	  format.js
+	end
   end
 
   def destroy
