@@ -8,8 +8,10 @@
 <% commentable = Post.find(post.id) %>
 <% comments = commentable.comments.recent.limit(10).all %>
 <% comments.each do |comment| %>
+	<div class="comments" >
 	<h5><%= comment.title %></h5>
 	<p><%= comment.comment %><p>
+	</div>
 <% end %>
 	<%= form_tag "/posts/add_new_comment" do %>
 	  <%= hidden_field_tag "id", post.id %>
@@ -19,7 +21,7 @@
 	  <%= text_field 'comment', 'title' %>
 	  <% end %>
 	  <br>
-	  <%= text_area 'comment', 'comment', :size => '50x5' %>
+	  <%= text_area 'comment', 'comment', :size => '40x5' %>
 	  <br>
 	  <%= submit_tag 'Add Comment' %>
 	</div>

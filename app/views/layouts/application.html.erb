@@ -31,7 +31,13 @@
   <h4>Posts</h4>
   <%= render 'posts/form', post: current_user.posts.new %>
 <% else %>
-  <p>Please sign in <%= link_to 'Sign in', new_page_session_path %></p>
+  <% if request.fullpath != "/users/new" %>
+	<% if request.fullpath != "/page_sessions/new" %>
+	<p>Join us <%= link_to 'Sign up', new_user_path %></p>
+	<br>
+	<p>Sign in <%= link_to 'Sign in', new_page_session_path %></p>
+	<% end %>
+  <% end %>
 <% end %>
 
 </body>

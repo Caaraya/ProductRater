@@ -31,9 +31,10 @@ helper_method :lookup
 	commentable = Post.find(params[:id])
 
 	# Create a comment with the user submitted content
-	@comment = Comment.new(comment_params)
+	comment = Comment.new(comment_params)
 	# Add the comment
-	commentable.comments << @comment
+	commentable.comments << comment
+	@comments = commentable.comments
     respond_to do |format|
 	  format.html { redirect_to root_path }
 	  format.js

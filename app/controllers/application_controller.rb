@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
   
+  def in_form?
+    current_user.present?
+  end
+  
   def admin?
     current_user.admin
   end
