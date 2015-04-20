@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-resources :comments, only: [:new, :create, :destroy]
+#resources :comments, only: [:new, :create, :destroy]
 resources :page_sessions, only: [:new, :create, :index]
 	resources :users, except: [:show] do
-	  resources :posts, only: [:new, :create, :destroy,:index]
+	  resources :posts, only: [:new, :create, :destroy, :index] do
+	    resources :likes, only: [:create]
+	  end
 	end
 
 delete 'sign_out' => 'page_sessions#destroy'

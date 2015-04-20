@@ -144,7 +144,6 @@ button, input[type=submit] {
 .post-row {
   margin: 2em 0;
   padding-bottom: 1em;
-  border-top: 6px dashed #ddd;
 
   .columns {
     padding-top: 2em;
