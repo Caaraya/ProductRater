@@ -7,11 +7,12 @@ class ApplicationController < ActionController::Base
   def signed_in?
     current_user.present?
   end
-  
+
+  # this doesn't seem to do anything
   def in_form?
     current_user.present?
   end
-  
+
   def admin?
     current_user.admin
   end
@@ -23,9 +24,9 @@ class ApplicationController < ActionController::Base
       nil
     end
   end
-  
+
   def all_users
     users = User.all
   end
-  
+
 end
