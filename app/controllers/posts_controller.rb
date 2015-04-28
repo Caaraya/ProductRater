@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-helper_method :lookup
+  # helper_method is just for methods you want to use in the views
+  # helper_method :lookup
+
  def index
     @posts = Posts.all
   end
@@ -25,7 +27,9 @@ helper_method :lookup
     @post = Post.find(params[:id])
   end
 
-  
+
+  # this logic would probably have made more sense in a `CommentsController`, since
+  # it would simplify the `PostsController` and keep it more focused.
   def add_new_comment
 	# Get the object that you want to comment
 	commentable = Post.find(params[:id])
@@ -55,15 +59,15 @@ helper_method :lookup
   def post_params
     params.require(:post).permit(:name, :description, :photo_url, :rating)
   end
-  
+
   def comment_params
     params.require(:comment).permit(:title, :comment, :post_id, :user_id)
   end
-  
+
   def lookup
     @_user ||= User.find(params[:user_id])
   end
-  
+
   def posts
 	@posts
   end

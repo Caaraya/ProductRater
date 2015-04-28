@@ -12,11 +12,12 @@
 
 <%= yield %>
 
+<!-- this signed_in? stuff would be great in a partial -->
 <% if signed_in? %>
   <h3>Current user: <%= current_user.name %></h3>
   <p><%= current_user.last_signed_in_at%><p>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
-  <% if current_user.admin == true %> 
+  <% if current_user.admin == true %>
 		<% all_users.each do |user| %>
 			<h4><%= user.name %><br></h4>
 			<p>Email: <%= user.email %><p>

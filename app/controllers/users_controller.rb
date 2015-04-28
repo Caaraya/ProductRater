@@ -18,7 +18,8 @@ def index
       render 'new'
     end
   end
-  
+
+  # This should definitely be limited to admin users, e.g. `if admin?`...
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
